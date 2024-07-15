@@ -1,20 +1,34 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			results: []
 		},
 		actions: {
+			
+			getCharacters:() => {
+				fetch('https://swapi.dev/api/people', {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+			
+				})
+				.then((response) => {
+					console.log('Response status:', response.status); 
+					if (response.status == 404) {
+						// getActions().crearAgenda()
+					}
+					return response.json();
+				})
+					.then((data) => {
+						console.log('Data from API:', data);
+						setStore({results:data.results});		
+						
+					})
+					.catch((error) => console.log('Error:', error));
+				},
+
+			
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
