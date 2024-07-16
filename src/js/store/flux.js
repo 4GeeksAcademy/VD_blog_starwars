@@ -1,33 +1,51 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			results: []
+			characters: [],
+			planets: [],
+			vehicles: []
 		},
 		actions: {
 			
-			getCharacters:() => {
-				fetch('https://swapi.dev/api/people', {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-			
-				})
-				.then((response) => {
-					console.log('Response status:', response.status); 
-					if (response.status == 404) {
-						// getActions().crearAgenda()
-					}
-					return response.json();
-				})
-					.then((data) => {
-						console.log('Data from API:', data);
-						setStore({results:data.results});		
+			getCharacter: async() => {
+			  try{
+			  	
+				let response= await fetch('https://swapi.dev/api/people') 
+				let data = await response.json()	
+				setStore({characters:data.results})	
+				return true;
+			  
+				}catch(error){
+				console.log(error);
+				return false;
+			  }
+			},
+			  getPlanet: async() => {
+				try{
+					
+				  let response= await fetch('https://swapi.dev/api/planets') 
+				  let data = await response.json()	
+				  setStore({planets:data.results})	
+				  return true;
+				
+				  }catch(error){
+				  console.log(error);
+				  return false;
+				}
+			},
+				getVehicle: async() => {
+					try{
 						
-					})
-					.catch((error) => console.log('Error:', error));
-				},
-
+					  let response= await fetch('https://swapi.dev/api/vehicles') 
+					  let data = await response.json()	
+					  setStore({vehicles:data.results})	
+					  return true;
+					
+					  }catch(error){
+					  console.log(error);
+					  return false;
+					}
+			},
 			
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
