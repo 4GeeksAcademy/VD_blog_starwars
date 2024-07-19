@@ -25,6 +25,7 @@ const injectContext = PassedComponent => {
 			state.actions.getCharacter();
 			state.actions.getPlanet();
 			state.actions.getVehicle();
+			// state.actions.getElement(id);
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime

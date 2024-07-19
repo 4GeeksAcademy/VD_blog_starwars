@@ -14,9 +14,10 @@ const HomeBlog = () => {
 	
     const renderCharacters = () => {
         return store.characters && store.characters.length > 0 ? (
-            <div className="container-fluid">
+            <div className="container-fluid card-group">
+               
                 <h1>Characters</h1>
-                <div className="d-flex overflow-visible " style={{width: "3000px"}}>
+                <div className="d-flex flex-row overflow-scroll " style={{width: "3000px"}}>
                     {store.characters.map((character, index) => (
                         character.url.split("/")[4] === "people" ? (
                             <div className=" mx-2"  key={character.name}>  
@@ -41,9 +42,10 @@ const HomeBlog = () => {
             <div className="container-fluid">
             
                 <h1>Planets</h1>
-                <div className="d-flex flex-row flex-wrap g-3">
+                <div className="d-flex overflow-visible " style={{width: "3000px"}}>
                     {store.planets.map((planet, index) => (
                         planet.url.split("/")[4] === "planets" ? (
+                            <div className=" mx-2"  key={planet.name}>
                             <CharacterCard
                                 key={planet.name}
                                 name={planet.name}
@@ -51,6 +53,7 @@ const HomeBlog = () => {
                                 type="planets"
                                 idp={planet.url.split("/")[5]}
                             />
+                        </div>
                         ) : null
                     ))}
                 </div>
@@ -64,9 +67,10 @@ const HomeBlog = () => {
             <div className="container-fluid">
             
                 <h1>Vehicles</h1>
-                <div className="d-flex flex-row flex-wrap g-3">
+                <div className="d-flex overflow-visible " style={{width: "3000px"}}>
                     {store.vehicles.map((vehicle, index) => (
                         vehicle.url.split("/")[4] === "vehicles" ? (
+                            <div className=" mx-2"  key={vehicle.name}>
                             <CharacterCard
                                 key={vehicle.name}
                                 name={vehicle.name}
@@ -74,6 +78,7 @@ const HomeBlog = () => {
                                 type="vehicles"
                                 idv={vehicle.url.split("/")[5]}
                             />
+                            </div>
                         ) : null
                     ))}
                 </div>
