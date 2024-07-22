@@ -20,7 +20,7 @@ const Navbar = () => {
 						</button>
 						<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						{store.favorites.map((characterFavorite, index) => (
-                            <li key={index}><div className="dropdown-item">{characterFavorite}
+                            <li key={index}><div className="dropdown-item d-flex justify-content-between align-items-center">{characterFavorite}
 							<i className="bi bi-trash3-fill ms-5 ps-4" onClick={() => actions.deleteFavorite(characterFavorite)} ></i>
 							
 							</div>

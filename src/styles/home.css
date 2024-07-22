@@ -1,0 +1,6 @@
+.home-blog {
+    background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2024/02/existe-tierra-universo-peliculas-series-star-wars-3269769.jpg?tf=3840x');
+    background-size: cover; /* Ajusta la imagen para cubrir el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}

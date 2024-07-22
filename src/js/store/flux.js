@@ -49,10 +49,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 			},
 			
-			getElement: async (id) =>	{
+			getElement: async (type,id) =>	{
 				try{
 						
-					let response= await fetch(`https://swapi.dev/api/people/${id}`)
+					let response= await fetch(`https://swapi.dev/api/${type}/${id}`)
 					let data = await response.json()	
 					setStore({ element:data })	
 					return true;
@@ -67,8 +67,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const store = getStore();
                 if (!store.favorites.includes(name)) {
                     setStore({ favorites: store.favorites.concat(name) });
-                }
-            },
+					return true;
+				}
+					return false;
+			},
 			deleteFavorite: (characterFavorite) => {
 				const store = getStore();
 				setStore({favorites: store.favorites.filter(item => item !== characterFavorite)

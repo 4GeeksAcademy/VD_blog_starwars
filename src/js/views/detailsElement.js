@@ -5,11 +5,11 @@ import { Context } from "../store/appContext";
 
 
 const DetailsElement = () => {
-	const {id}= useParams();
+	const { type, id }= useParams();
 	const { store, actions } = useContext(Context);
 	
 	useEffect(() => {
-	actions.getElement(id);
+	actions.getElement(type, id);
 	},[]);
 	
 	console.log(store.element)

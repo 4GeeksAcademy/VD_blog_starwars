@@ -20,15 +20,19 @@ const HomeBlog = () => {
                 <div className="d-flex flex-row overflow-scroll " style={{width: "3000px"}}>
                     {store.characters.map((character, index) => (
                         character.url.split("/")[4] === "people" ? (
-                            <div className=" mx-2"  key={character.name}>  
+                            // <div className=" mx-2" style={{ width: '20rem' }}  key={character.name}>  
                             <CharacterCard
                                 key={character.name}
                                 name={character.name}
                                 index={index}
                                 type="people"
-                            />
+                                id={character.url.split("/")[5]}
+                                eye={character.eye_color}
+                                hair={character.hair_color}
+                                gender={character.gender}
+                                />
                         
-                      </div>
+                    //   </div>
                         ): null    
                 ))}
                     
@@ -51,7 +55,7 @@ const HomeBlog = () => {
                                 name={planet.name}
                                 index={index}
                                 type="planets"
-                                idp={planet.url.split("/")[5]}
+                                id={planet.url.split("/")[5]}
                             />
                         </div>
                         ) : null
@@ -76,7 +80,7 @@ const HomeBlog = () => {
                                 name={vehicle.name}
                                 index={index}
                                 type="vehicles"
-                                idv={vehicle.url.split("/")[5]}
+                                id={vehicle.url.split("/")[5]}
                             />
                             </div>
                         ) : null
@@ -88,7 +92,7 @@ const HomeBlog = () => {
     };
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid home-blog d-flex flex-column min-vh-100">
             {renderCharacters()}
             {renderPlanets()}
             {renderVehicles()}
